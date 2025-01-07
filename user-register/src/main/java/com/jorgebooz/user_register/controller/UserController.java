@@ -1,16 +1,18 @@
 package com.jorgebooz.user_register.controller;
 
 
-import com.jorgebooz.user_register.model.User;
+import com.jorgebooz.user_register.model.Users;
 import com.jorgebooz.user_register.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
+    @Autowired
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -18,17 +20,20 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        return ResponseEntity.ok(userService.saveUser(user));
+    public ResponseEntity<Users> createUser(@RequestBody Users user){
+        System.out.println(user.toString());
+        return ResponseEntity.ok(userService.save(user));
+
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> findUser(){
-        return ResponseEntity.ok(userService.listAll());
+    public ResponseEntity<List<Users>> findUser(){
+        System.out.println("passou");
+        return ResponseEntity.ok(userService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> findUser(@PathVariable Long id){
+    public ResponseEntity<Users> findUser(@PathVariable Long id){
         return ResponseEntity.ok(userService.findId(id));
     }
 
