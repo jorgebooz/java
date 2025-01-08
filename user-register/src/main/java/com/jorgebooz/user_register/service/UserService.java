@@ -24,7 +24,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    @Query("SELECT * FROM users")
+
     public List<Users> findAll() {
         return userRepository.findAll();
     }
@@ -33,6 +33,7 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
     }
 
+    
 
     public void delete(Long id){
         userRepository.deleteById(id);

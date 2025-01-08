@@ -2,14 +2,12 @@ package com.jorgebooz.user_register.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
 
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class Users {
@@ -26,9 +24,7 @@ public class Users {
     @Column(nullable = false, unique = true)
     private String email;
 
-    public Users(String name, String email) {
-        this.name = name;
-        this.email = email;
+    public Users() {
     }
 
     public String getEmail() {
