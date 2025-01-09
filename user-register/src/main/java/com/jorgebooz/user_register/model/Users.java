@@ -6,8 +6,6 @@ import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
 
 
-@Getter
-@Setter
 @Entity
 @Table(name = "users")
 public class Users {
@@ -33,6 +31,14 @@ public class Users {
 
     public String getName() {
         return name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
